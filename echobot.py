@@ -32,6 +32,6 @@ app = App("echobot-poe")
 def fastapi_app():
     bot = EchoBot()
     # see https://creator.poe.com/docs/quick-start#configuring-the-access-credentials
-    # app = fp.make_app(bot, access_key=<YOUR_ACCESS_KEY>, bot_name=<YOUR_BOT_NAME>)
+    # app = fp.make_app(bot, access_key=<tlmZVUCL4SYZlN7T6xfDPbahnAevcZmh>, bot_name=<AuditAssistantKrs>)
     app = fp.make_app(bot, allow_without_key=True)
     return app
