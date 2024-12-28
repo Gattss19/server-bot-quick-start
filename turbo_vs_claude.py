@@ -120,7 +120,7 @@ class GPT35TurbovsClaudeBot(fp.PoeBot):
 
     async def get_settings(self, setting: fp.SettingsRequest) -> fp.SettingsResponse:
         return fp.SettingsResponse(
-            server_bot_dependencies={"GPT-3.5-Turbo": 1, "Claude-3.5-Haiku": 1}
+            server_bot_dependencies={"GPT-3.5-Turbo": 0, "Claude-3.5-Haiku": 1}
         )
 
 
