@@ -67,6 +67,11 @@ class GPT35FunctionCallingBot(fp.PoeBot):
 
     async def get_settings(self, setting: fp.SettingsRequest) -> fp.SettingsResponse:
         return fp.SettingsResponse(server_bot_dependencies={"GPT-3.5-Turbo": 2})
+    async def get_settings(self, setting: fp.SettingsRequest) -> fp.SettingsResponse:
+        return fp.SettingsResponse(
+        introduction_message="Привет! Я ваш новый бот-ассистент. Задайте мне любой вопрос!"
+    )
+
 
 
 REQUIREMENTS = ["fastapi-poe==0.0.48"]
@@ -79,6 +84,6 @@ app = App("function-calling-poe")
 def fastapi_app():
     bot = GPT35FunctionCallingBot()
     # see https://creator.poe.com/docs/quick-start#configuring-the-access-credentials
-    # app = fp.make_app(bot, access_key=<tlmZVUCL4SYZlN7T6xfDPbahnAevcZmh>, bot_name=<AuditAssistantKrs>)
+    # app = fp.make_app(bot, access_key=<6dXnPogSx0g73Yvm3xLWENaG44mgVIJq>, bot_name=<AuditAssistantKrs>)
     app = fp.make_app(bot, allow_without_key=True)
     return app
