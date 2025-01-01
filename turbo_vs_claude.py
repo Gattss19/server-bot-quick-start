@@ -113,14 +113,14 @@ class GPT35TurbovsClaudeBot(fp.PoeBot):
     ) -> AsyncIterable[fp.PartialResponse]:
         streams = [
             stream_request_wrapper(request, bot)
-            for bot in ("Web-Search", "Claude-3.5-Haiku")
+            for bot in ("GPT-4o-Mini", "Claude-3-Haiku")
         ]
         async for msg in combine_streams(*streams):
             yield msg
 
     async def get_settings(self, setting: fp.SettingsRequest) -> fp.SettingsResponse:
         return fp.SettingsResponse(
-            server_bot_dependencies={"Web-Search": 1, "Claude-3.5-Haiku": 1}
+            server_bot_dependencies={"GPT-4o-Mini": 1, "Claude-3-Haiku": 1}
         )
 
 
@@ -133,7 +133,9 @@ app = App("turbo-vs-claude-poe")
 @asgi_app()
 def fastapi_app():
     bot = GPT35TurbovsClaudeBot()
-    # see https://creator.poe.com/docs/quick-start#configuring-the-access-credentials
-    # app = fp.make_app(bot, access_key=<tlmZVUCL4SYZlN7T6xfDPbahnAevcZmh>, bot_name=<AuditAssistantKrs>)
-    app = fp.make_app(bot, allow_without_key=True)
+    app = fp.make_app(
+        bot,
+        access_key="R1FTO3TQt0HQfMKPE6qpUsd3YTPbeoQO",  # Укажите ключ в кавычках
+        bot_name="AuditAssistant"  # Укажите имя бота в кавычках
+    )
     return app
